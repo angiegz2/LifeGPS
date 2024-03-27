@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Mostrar hora, fecha y ubicación -->
+    <TextView
+        android:id="@+id/textHoraFechaUbicacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hora: XX:XX | Fecha: XX/XX/XXXX | Ubicación: Ciudad, País"
+        android:gravity="center"
+        android:padding="8dp" />
+
+    <!-- Texto "Inicia Sesión Con Life GPS" -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Inicia Sesión Con Life GPS"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_below="@id/textHoraFechaUbicacion"
+        android:padding="8dp" />
+
+    <!-- Campo de correo o número de celular -->
+    <EditText
+        android:id="@+id/editTextCorreoNumero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Correo electrónico o número de celular"
+        android:padding="8dp"
+        android:layout_below="@id/textHoraFechaUbicacion"
+        android:layout_marginTop="20dp" />
+
+    <!-- Campo de contraseña -->
+    <EditText
+        android:id="@+id/editTextContrasena"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:padding="8dp"
+        android:layout_below="@id/editTextCorreoNumero"
+        android:layout_marginTop="8dp" />
+
+    <!-- Botón para iniciar sesión -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Iniciar Sesión"
+        android:layout_below="@id/editTextContrasena"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+</RelativeLayout>
