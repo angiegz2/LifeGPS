@@ -21,7 +21,10 @@
             </intent-filter>
         </activity>
         <!-- Actividad IniciarSesion -->
-        <activity android:name=".IniciarSesion" />
+
+        <activity android:name=".IniciarSesion"
+            android:parentActivityName=".MainActivity" />
+
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />

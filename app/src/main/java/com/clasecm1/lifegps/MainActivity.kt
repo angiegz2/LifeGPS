@@ -3,20 +3,20 @@ package com.clasecm1.lifegps
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import com.clasecm1.lifegps.IniciarSesion
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Aquí puedes agregar algún código para verificar si el usuario ya inició sesión
-        // Si el usuario ya inició sesión, puedes redirigirlo directamente a otra actividad
-
-        // Ejemplo de redireccionamiento a IniciarSesion.kt
-        val intent = Intent(this, IniciarSesion::class.java)
-        startActivity(intent)
-        finish() // Opcional: finaliza MainActivity para que no vuelva atrás presionando el botón de retroceso
+        Handler().postDelayed({
+            // Redirigir a IniciarSesion.kt después de 2 segundos (2000 milisegundos)
+            val intent = Intent(this, IniciarSesion::class.java)
+            startActivity(intent)
+            finish() // Finalizar MainActivity para que no vuelva atrás
+        }, 2000) // Retraso de 2 segundos (2000 milisegundos)
     }
 }
+
