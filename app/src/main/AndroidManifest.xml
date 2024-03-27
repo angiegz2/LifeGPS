@@ -22,6 +22,7 @@
         </activity>
         <!-- Actividad IniciarSesion -->
         <activity android:name=".IniciarSesion"
+            android:exported="true"
             android:parentActivityName=".MainActivity" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
