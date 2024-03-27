@@ -9,6 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hora: XX:XX | Fecha: XX/XX/XXXX | Ubicación: Ciudad, País"
+        android:textSize="16sp"
+        android:textStyle="bold"
         android:gravity="center"
         android:padding="8dp" />
 
@@ -16,7 +18,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Inicia Sesión Con Life GPS"
+        android:text=" Inicia Sesión Con Life GPS"
         android:textSize="18sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -29,9 +31,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Correo electrónico o número de celular"
+        android:background="@drawable/edittext_border"
         android:padding="8dp"
         android:layout_below="@id/textHoraFechaUbicacion"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="10dp" />
 
     <!-- Campo de contraseña -->
     <EditText
@@ -39,10 +42,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Contraseña"
+        android:background="@drawable/edittext_border"
         android:inputType="textPassword"
         android:padding="8dp"
         android:layout_below="@id/editTextCorreoNumero"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="10dp" />
 
     <!-- Botón para iniciar sesión -->
     <Button
