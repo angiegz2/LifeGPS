@@ -52,8 +52,8 @@ android {
 dependencies {
 
     implementation("androidx.core:core-ktx:1.12.0")
-    implementation ("androidx.appcompat:appcompat:1.4.1")//Linea agregada
-    implementation ("androidx.constraintlayout:constraintlayout:2.1.3")//
+    implementation ("androidx.appcompat:appcompat:1.6.1")//Linea agregada
+    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")//
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-compose:1.8.2")
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
@@ -69,5 +69,7 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation ("com.google.android.gms:play-services-location:21.2.0")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
 }

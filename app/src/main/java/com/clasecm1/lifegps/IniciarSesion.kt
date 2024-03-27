@@ -11,7 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.util.*
+
 
 class IniciarSesion : AppCompatActivity() {
 
@@ -59,31 +64,38 @@ class IniciarSesion : AppCompatActivity() {
     }
 
 
+    @OptIn(DelicateCoroutinesApi::class)
     private fun obtenerUbicacionActual() {
         if (checkLocationPermission()) {
             fusedLocationClient.lastLocation
                 .addOnSuccessListener { location ->
                     location?.let {
-                        val geocoder = Geocoder(this, Locale.getDefault())
-                        try {
-                            val addresses = geocoder.getFromLocation(it.latitude, it.longitude, 1)
-                            if (addresses != null && addresses.isNotEmpty()) {
-                                val address = addresses[0]
-                                val ciudad = address.locality ?: "Desconocido"
-                                val pais = address.countryName ?: "Desconocido"
+                        GlobalScope.launch(Dispatchers.IO) {
+                            val geocoder = Geocoder(this@IniciarSesion, Locale.getDefault())
+                            try {
+                                val addresses = geocoder.getFromLocation(it.latitude, it.longitude, 1)
+                                launch(Dispatchers.Main) {
+                                    if (!addresses.isNullOrEmpty()) {
+                                        val address = addresses[0]
+                                        val ciudad = address.locality ?: "Desconocido"
+                                        val pais = address.countryName ?: "Desconocido"
 
-                                val cal = Calendar.getInstance()
-                                val hora = cal.get(Calendar.HOUR_OF_DAY)
-                                val minutos = cal.get(Calendar.MINUTE)
-                                val fecha = "${cal.get(Calendar.DAY_OF_MONTH)}/${cal.get(Calendar.MONTH) + 1}/${cal.get(Calendar.YEAR)}"
+                                        val cal = Calendar.getInstance()
+                                        val hora = cal.get(Calendar.HOUR_OF_DAY)
+                                        val minutos = cal.get(Calendar.MINUTE)
+                                        val fecha = "${cal.get(Calendar.DAY_OF_MONTH)}/${cal.get(Calendar.MONTH) + 1}/${cal.get(Calendar.YEAR)}"
 
-                                val ubicacionTexto = "Hora: $hora:$minutos | Fecha: $fecha | Ubicación: $ciudad, $pais"
-                                textHoraFechaUbicacion.text = ubicacionTexto
-                            } else {
-                                Toast.makeText(this, "No se encontraron direcciones de ubicación", Toast.LENGTH_SHORT).show()
+                                        val ubicacionTexto = "Hora: $hora:$minutos | Fecha: $fecha | Ubicación: $ciudad, $pais"
+                                        textHoraFechaUbicacion.text = ubicacionTexto
+                                    } else {
+                                        Toast.makeText(this@IniciarSesion, "No se encontraron direcciones de ubicación", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                            } catch (e: Exception) {
+                                launch(Dispatchers.Main) {
+                                    Toast.makeText(this@IniciarSesion, "Error al obtener la ubicación: ${e.message}", Toast.LENGTH_SHORT).show()
+                                }
                             }
-                        } catch (e: Exception) {
-                            Toast.makeText(this, "Error al obtener la ubicación: ${e.message}", Toast.LENGTH_SHORT).show()
                         }
                     } ?: run {
                         Toast.makeText(this, "No se pudo obtener la ubicación", Toast.LENGTH_SHORT).show()
