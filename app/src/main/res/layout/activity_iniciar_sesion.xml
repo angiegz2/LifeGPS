@@ -8,17 +8,18 @@
         android:id="@+id/textHoraFechaUbicacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hora: XX:XX | Fecha: XX/XX/XXXX | Ubicación: Ciudad, País"
+        android:text="@string/text_hora_fecha_ubicacion"
         android:textSize="16sp"
         android:textStyle="bold"
         android:gravity="center"
         android:padding="8dp" />
 
+
     <!-- Texto "Inicia Sesión Con Life GPS" -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=" Inicia Sesión Con Life GPS"
+        android:text="@string/text_iniciar_sesion_con_gps"
         android:textSize="18sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -30,21 +31,26 @@
         android:id="@+id/editTextCorreoNumero"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Correo electrónico o número de celular"
+        android:hint="@string/correo_electr_nico_o_n_mero_de_celular"
         android:background="@drawable/edittext_border"
-        android:padding="8dp"
+        android:padding="12dp"
+        android:minHeight="48dp"
         android:layout_below="@id/textHoraFechaUbicacion"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:inputType="textEmailAddress"
+        android:autofillHints="emailAddress" />
+
 
     <!-- Campo de contraseña -->
     <EditText
         android:id="@+id/editTextContrasena"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contraseña"
+        android:hint="@string/contrase_a"
         android:background="@drawable/edittext_border"
         android:inputType="textPassword"
-        android:padding="8dp"
+        android:padding="12dp"
+        android:minHeight="48dp"
         android:layout_below="@id/editTextCorreoNumero"
         android:layout_marginTop="10dp" />
 
@@ -52,7 +58,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión"
+        android:text="@string/iniciar_sesi_n"
         android:layout_below="@id/editTextContrasena"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp" />

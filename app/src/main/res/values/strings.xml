@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">LifeGPS</string>
+    <string name="text_iniciar_sesion_con_gps">Inicia Sesión Con Life GPS</string>
+    <string name="text_hora_fecha_ubicacion">Hora: XX:XX | Fecha: XX/XX/XXXX | Ubicación: Ciudad, País</string>
+    <string name="correo_electr_nico_o_n_mero_de_celular">Correo electrónico o número de celular</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="iniciar_sesi_n">Iniciar Sesión</string>
 </resources>
