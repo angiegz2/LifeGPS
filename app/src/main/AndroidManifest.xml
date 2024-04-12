@@ -13,19 +13,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LifeGPS"
         tools:targetApi="31">
-        <activity android:name=".MainActivity"
-            android:exported="true">
+        <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- Actividad IniciarSesion -->
-
-        <activity android:name=".IniciarSesion"
-            android:parentActivityName=".MainActivity" />
-
+        <activity
+            android:name=".IniciarSesion"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.LifeGPS">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />

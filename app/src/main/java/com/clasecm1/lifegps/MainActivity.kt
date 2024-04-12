@@ -6,17 +6,18 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity() {
+class SplashScreenActivity : AppCompatActivity() {
+    private val splashTimeOut: Long = 2000 // 2 segundos
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_splash_screen)
 
         Handler().postDelayed({
-            // Redirigir a IniciarSesion.kt después de 2 segundos (2000 milisegundos)
+            // Se ejecutará después del tiempo especificado
             val intent = Intent(this, IniciarSesion::class.java)
             startActivity(intent)
-            finish() // Finalizar MainActivity para que no vuelva atrás
-        }, 2000) // Retraso de 2 segundos (2000 milisegundos)
+            finish()
+        }, splashTimeOut)
     }
 }
-

@@ -1,6 +1,5 @@
 package com.clasecm1.lifegps
 
-
 import android.Manifest
 import android.content.pm.PackageManager
 import android.location.Geocoder
@@ -46,7 +45,6 @@ class IniciarSesion : AppCompatActivity() {
         return fineLocationPermission && coarseLocationPermission
     }
 
-
     private fun solicitarPermisos() {
         ActivityCompat.requestPermissions(
             this,
@@ -57,7 +55,6 @@ class IniciarSesion : AppCompatActivity() {
             REQUEST_LOCATION_PERMISSION
         )
     }
-
 
     private fun obtenerUbicacionActual() {
         if (checkLocationPermission()) {
@@ -96,8 +93,6 @@ class IniciarSesion : AppCompatActivity() {
             solicitarPermisos()
         }
     }
-
-
 
     companion object {
         private const val REQUEST_LOCATION_PERMISSION = 1001
