@@ -10,4 +10,12 @@
     <color name="mi_color">#FFFFFF</color>
     <color name="mi_color_de_borde">#000000</color>
     <color name="mi_color_de_fondo">#88D4F1</color>
+    <color name="colorRojo">#FF0000</color>
+    <color name="colorNaranja">#FF9800</color>
+    <color name="colorAzul">#2196F3</color>
+    <color name="colorVerde">#5AEA5F</color>
+
+
+
+
 </resources>

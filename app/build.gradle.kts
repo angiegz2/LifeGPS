@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id ("kotlin-android-extensions")
 }
 
 android {
@@ -71,5 +72,5 @@ dependencies {
     implementation ("com.google.android.gms:play-services-location:21.2.0")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-
+    implementation ("org.jetbrains.kotlin:kotlin-android-extensions")
 }

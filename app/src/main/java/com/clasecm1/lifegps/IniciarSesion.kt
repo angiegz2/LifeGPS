@@ -4,22 +4,25 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.*
 
-
 class IniciarSesion : AppCompatActivity() {
 
     private lateinit var textHoraFechaUbicacion: TextView
+    private lateinit var editTextCorreoNumero: EditText
+    private lateinit var editTextContrasena: EditText
+    private lateinit var btnIniciarSesion: Button
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +30,23 @@ class IniciarSesion : AppCompatActivity() {
         setContentView(R.layout.activity_iniciar_sesion)
 
         textHoraFechaUbicacion = findViewById(R.id.textHoraFechaUbicacion)
+        editTextCorreoNumero = findViewById(R.id.editTextCorreoNumero)
+        editTextContrasena = findViewById(R.id.editTextContrasena)
+        btnIniciarSesion = findViewById(R.id.btnIniciarSesion)
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+        btnIniciarSesion.setOnClickListener {
+            val correoONumero = editTextCorreoNumero.text.toString()
+            val contrasena = editTextContrasena.text.toString()
+
+            // Aquí debes manejar la lógica de inicio de sesión con Life GPS
+            if (inicioDeSesionExitoso(correoONumero, contrasena)) {
+                // Si el inicio de sesión es exitoso, puedes dirigir a la siguiente actividad
+            } else {
+                // Manejar inicio de sesión fallido
+            }
+        }
 
         if (checkLocationPermission()) {
             obtenerUbicacionActual()
@@ -61,7 +80,6 @@ class IniciarSesion : AppCompatActivity() {
         )
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
     private fun obtenerUbicacionActual() {
         if (checkLocationPermission()) {
             fusedLocationClient.lastLocation
@@ -89,9 +107,7 @@ class IniciarSesion : AppCompatActivity() {
                                     }
                                 }
                             } catch (e: Exception) {
-                                launch(Dispatchers.Main) {
-                                    Toast.makeText(this@IniciarSesion, "Error al obtener la ubicación: ${e.message}", Toast.LENGTH_SHORT).show()
-                                }
+                                Toast.makeText(this@IniciarSesion, "Error al obtener la ubicación: ${e.message}", Toast.LENGTH_SHORT).show()
                             }
                         }
                     } ?: run {
@@ -104,6 +120,10 @@ class IniciarSesion : AppCompatActivity() {
         } else {
             solicitarPermisos()
         }
+    }
+
+    private fun inicioDeSesionExitoso(correoONumero: String, contrasena: String): Boolean {
+        return true
     }
 
     companion object {
