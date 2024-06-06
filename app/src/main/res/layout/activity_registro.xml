@@ -118,8 +118,7 @@
                             android:layout_height="wrap_content"
                             android:text="Registrarse"
                             android:textColor="@android:color/black"
-                            android:backgroundTint="@color/verde_2"
-                            android:cornerRadius="30dp"
+                            android:background="@drawable/rounded_corners"
                             android:padding="12dp" />
 
                 </LinearLayout>

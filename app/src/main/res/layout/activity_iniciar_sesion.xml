@@ -104,7 +104,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
         android:text="Registrate"
-        android:background="@drawable/custom_button_background3"
+        android:background="@drawable/rounded_corners"
         android:minHeight="48dp"
         android:padding="12dp"/>
 
