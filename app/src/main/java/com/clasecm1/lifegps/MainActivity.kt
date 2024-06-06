@@ -17,7 +17,6 @@ class SplashScreenActivity : AppCompatActivity() {
         // Iniciar el contador regresivo
         countDownTimer = object : CountDownTimer(splashTimeOut, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                // No necesitas hacer nada en cada tick, ya que solo esperamos el tiempo especificado
             }
 
             override fun onFinish() {
@@ -31,7 +30,6 @@ class SplashScreenActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        // Asegúrate de detener el contador regresivo para evitar fugas de memoria
         countDownTimer.cancel()
     }
 }

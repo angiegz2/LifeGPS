@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import android.widget.Toast
-import com.clasecm1.lifegps.Emergencia
 
 class EmergenciaAdapter(private val context: Context, private val emergencias: List<Emergencia>) : BaseAdapter() {
 
@@ -25,7 +24,7 @@ class EmergenciaAdapter(private val context: Context, private val emergencias: L
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val rowView = convertView ?: inflater.inflate(R.layout.item_emergencia, parent, false)
+        val rowView = convertView ?: inflater.inflate(R.layout.activity_lista_emergencias, parent, false)
 
         val tvNombre = rowView.findViewById<TextView>(R.id.tvNombre)
         val emergencia = getItem(position) as Emergencia

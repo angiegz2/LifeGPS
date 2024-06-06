@@ -13,6 +13,16 @@ class RegistroActivity : AppCompatActivity() {
         setContentView(binding.root)
         val btnRegistrarse = binding.btnRegistrarse
         val etNombre = binding.etNombreCompleto
+        val etSexo = binding.etSexo
+        val etEdad = binding.etEdad
+        val etIdentificacion = binding.etIdentificacion
+        val etTelefono = binding.etTelefono
+        val etDireccion = binding.etDireccion
+        val etEPS = binding.etEPS
+        val etContactoEmergencia = binding.etContactoEmergencia
+        val etMedicamentos = binding.etMedicamentosAlergias
+        val etEnfermedades = binding.etEnfermedades
+        val etTipoSanguineo = binding.etTipoSanguineo
 
         binding.btnRegistrarse.setOnClickListener {
             val intent = Intent(this, ListaEmergenciasActivity::class.java)

@@ -65,16 +65,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Contacto de emergencia *"
-            android:inputType="text"
-            android:textColorHint="@color/dark_grey" />
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etMedicamentosAlergias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Medicamentos a los que es alergico: *"
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/etEnfermedades"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enfermedades que padece: *"
-            android:inputType="text"
-            android:textColorHint="@color/dark_grey"/>
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/etTipoSanguineo"
