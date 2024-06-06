@@ -1,170 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:padding="8dp"
     android:background="@drawable/fondo">
 
     <TextView
-    android:id="@+id/textViewInformacionPaciente"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Información del paciente"
-    android:layout_marginStart="100dp"
-    android:textStyle="bold"
-    android:textSize="18sp"
-    android:layout_marginTop="16dp"/>
+        android:id="@+id/textViewInformacionPaciente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Información del paciente"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-<EditText
-    android:id="@+id/etInformacionPaciente"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Sexo"
-    android:background="@drawable/edittext_border"
-    android:padding="12dp"
-    android:minHeight="48dp"
-    android:layout_below="@id/textViewInformacionPaciente"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/etInformacionPaciente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Sexo"
+        android:background="@drawable/edittext_border"
+        android:padding="12dp"
+        android:minHeight="48dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewInformacionPaciente"/>
 
-<EditText
-    android:id="@+id/etRangoEdad"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Rango de edad"
-    android:background="@drawable/edittext_border"
-    android:padding="12dp"
-    android:layout_below="@+id/etInformacionPaciente"
-    android:minHeight="48dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/etRangoEdad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Rango de edad"
+        android:background="@drawable/edittext_border"
+        android:padding="12dp"
+        android:minHeight="48dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etInformacionPaciente"/>
 
-<TextView
-    android:id="@+id/textViewTipoEmergencia"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Seleccione su tipo de emergencia"
-    android:layout_marginStart="70dp"
-    android:textSize="18sp"
-    android:textStyle="bold"
-    android:layout_below="@id/etRangoEdad"
-    android:layout_marginTop="16dp"/>
+    <TextView
+        android:id="@+id/textViewTipoEmergencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccione su tipo de emergencia"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etRangoEdad"/>
 
-        <Button
-            android:id="@+id/btnAlertaExtrema"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alerta extrema"
-            android:layout_marginStart="130dp"
-            android:textAllCaps="false"
-            android:gravity="center"
-            android:minHeight="48dp"
-            android:padding="14dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_below="@+id/textViewTipoEmergencia"
-            android:background="@drawable/custom_button_background"
-            android:layout_marginTop="8dp" />
+    <Button
+        android:id="@+id/btnAlertaExtrema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alerta extrema"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:background="@drawable/custom_button_background"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewTipoEmergencia"/>
 
-        <Button
-            android:id="@+id/btnUrgente"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Urgente"
-            android:layout_alignLeft="@id/btnAlertaExtrema"
-            android:layout_alignRight="@id/btnAlertaExtrema"
-            android:textAllCaps="false"
-            android:gravity="center"
-            android:minHeight="48dp"
-            android:padding="8dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_below="@+id/btnAlertaExtrema"
-            android:background="@drawable/custom_button_background1"
-            android:layout_marginTop="8dp" />
+    <Button
+        android:id="@+id/btnUrgente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Urgente"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:background="@drawable/custom_button_background1"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnAlertaExtrema"/>
 
-        <Button
-            android:id="@+id/btnGrave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Grave"
-            android:layout_alignLeft="@id/btnAlertaExtrema"
-            android:layout_alignRight="@id/btnAlertaExtrema"
-            android:textAllCaps="false"
-            android:gravity="center"
-            android:minHeight="48dp"
-            android:padding="14dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_below="@+id/btnUrgente"
-            android:background="@drawable/custom_button_background2"
-            android:layout_marginTop="8dp" />
+    <Button
+        android:id="@+id/btnGrave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Grave"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:background="@drawable/custom_button_background2"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnUrgente"/>
 
-        <Button
-            android:id="@+id/btnLeve"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Leve"
-            android:layout_alignLeft="@id/btnAlertaExtrema"
-            android:layout_alignRight="@id/btnAlertaExtrema"
-            android:textAllCaps="false"
-            android:gravity="center"
-            android:padding="16dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_below="@+id/btnGrave"
-            android:background="@drawable/custom_button_background3"
-            android:layout_marginTop="8dp" />
+    <Button
+        android:id="@+id/btnLeve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Leve"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:padding="10dp"
+        android:background="@drawable/custom_button_background3"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnGrave"/>
 
-<Button
-    android:id="@+id/btnActivarRastreo"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Activar rastreo"
-    android:layout_below="@id/btnLeve"
-    android:layout_marginTop="90dp"
-    android:background="@drawable/custom_button_rastreo"
-    android:layout_centerHorizontal="true"/>
+    <Button
+        android:id="@+id/btnActivarRastreo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activar rastreo"
+        android:background="@drawable/custom_button_rastreo"
+        android:layout_marginTop="90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@id/btnLeve"/>
 
     <View
         android:id="@+id/img_pgs"
         android:layout_width="65dp"
         android:layout_height="62dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="167dp"
-        android:layout_marginTop="440dp"
-        android:background="@drawable/img" />
+        android:background="@drawable/img"
+        android:layout_marginTop="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnLeve"/>
 
     <TextView
-    android:id="@+id/textViewTiempoLlegada"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Tiempo de llegada:"
-    android:layout_marginStart="130dp"
-    android:textStyle="bold"
-    android:textSize="18sp"
-    android:layout_below="@id/btnActivarRastreo"
-    android:layout_marginTop="16dp"/>
+        android:id="@+id/textViewTiempoLlegada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tiempo de llegada:"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnActivarRastreo"/>
+
+    <Button
+        android:id="@+id/btnTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="03:00 min"
+        android:background="@drawable/edittext_border"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@id/textViewTiempoLlegada"/>
 
     <View
         android:id="@+id/home"
         android:layout_width="65dp"
         android:layout_height="62dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="162dp"
-        android:layout_marginTop="667dp"
-        android:background="@drawable/home" />
+        android:background="@drawable/home"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <Button
-        android:id="@+id/btnCronometro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="03:00 minutos"
-        android:layout_gravity="center"
-        android:padding="16dp"
-        android:layout_below="@id/textViewTiempoLlegada"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"/>
+    <ImageView
+        android:id="@+id/profileIcon"
+        android:layout_width="90dp"
+        android:layout_height="70dp"
+        android:padding="1dp"
+        android:src="@drawable/profile"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+

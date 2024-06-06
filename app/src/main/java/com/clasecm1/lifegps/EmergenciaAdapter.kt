@@ -36,7 +36,7 @@ class EmergenciaAdapter(private val context: Context, private val emergencias: L
 
 
         rowView.setOnClickListener {
-            val emergencia = getItem(position) as Emergencia
+            val emergencias = getItem(position) as Emergencia
             onEmergenciaItemClick(emergencia)
         }
 

@@ -2,9 +2,20 @@
     <string name="app_name">LifeGPS</string>
     <string name="text_iniciar_sesion_con_gps">Inicia Sesión Con Life GPS</string>
     <string name="text_hora_fecha_ubicacion">Hora: XX:XX | Fecha: XX/XX/XXXX | Ubicación: Ciudad, País</string>
-    <string name="correo_celular">Correo electrónico o número de celular</string>
+    <string name="correoOnumero">Correo electrónico o número de celular</string>
     <string name="contrasena">Contraseña</string>
     <string name="iniciar_sesi_n">Iniciar Sesión</string>
+    <string name="nombre_completo_hint">Nombre completo <font color="#FF0000">*</font></string>
+    <string name="sexo_hint">Sexo <font color="#FF0000">*</font></string>
+    <string name="edad_hint">Edad <font color="#FF0000">*</font></string>
+    <string name="identificacion_hint">Nº de identificación <font color="#FF0000">*</font></string>
+    <string name="telefono_hint">Teléfono <font color="#FF0000">*</font></string>
+    <string name="direccion_hint">Dirección <font color="#FF0000">*</font></string>
+    <string name="eps_hint">EPS a la que pertenece <font color="#FF0000">*</font></string>
+    <string name="contacto_emergencia_hint">Contacto de emergencia <font color="#FF0000">*</font></string>
+    <string name="medicamentos_alergias_hint">Medicamentos a los que es alergico: <font color="#FF0000">*</font></string>
+    <string name="enfermedades_hint">Enfermedades que padece: <font color="#FF0000">*</font></string>
+    <string name="tipo_sanguineo_hint">Tipo sanguíneo <font color="#FF0000">*</font></string>
     <string name="LACPINOSAN">Laceraciones superficiales en la piel que no sangran abundantemente.</string>
     <string name="ACCAUTMOV">Accidente automovilistico con personas atrapadas en el interior</string>
     <string name="AMPTREXT">Amputación traumática de extremidades</string>
@@ -15,4 +26,9 @@
     <string name="hora">Hora: XX:XX</string>
     <string name="fecha">Fecha: XX/XX/XXXX</string>
     <string name="ubicacion">Ubicación: Ciudad, País</string>
+    <string name="Calma">Mantenga la calma, de esto depende la supervivencia del paciente.</string>
+    <string name="Hacer">¿Qué debo hacer?</string>
+    <string name="Evaluar">Verifica si hay peligros como fuego, cables eléctricos caídos, o riesgos de explosión. Si es seguro hacerlo, acércate al vehículo y evalúa la condición de las personas atrapadas.</string>
+    <string name="Mover">A menos que exista un peligro inminente, como un incendio, no intentes mover a las personas atrapadas.</string>
+    <string name="Ayuda">Si las personas atrapadas están conscientes, intenta mantenerlas despiertas y alertas. Pídeles que te hablen para ayudarles a permanecer conscientes.</string>
 </resources>

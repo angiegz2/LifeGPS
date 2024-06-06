@@ -14,13 +14,11 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        // Iniciar el contador regresivo
         countDownTimer = object : CountDownTimer(splashTimeOut, 1000) {
             override fun onTick(millisUntilFinished: Long) {
             }
 
             override fun onFinish() {
-                // Se ejecutará después del tiempo especificado
                 val intent = Intent(this@SplashScreenActivity, IniciarSesion::class.java)
                 startActivity(intent)
                 finish()

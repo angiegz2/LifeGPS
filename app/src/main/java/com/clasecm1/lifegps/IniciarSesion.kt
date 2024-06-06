@@ -14,11 +14,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.lifecycleScope
 import com.clasecm1.lifegps.databinding.ActivityIniciarSesionBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.Calendar
 import java.util.Locale
@@ -32,7 +32,6 @@ class IniciarSesion : AppCompatActivity() {
     private lateinit var editTextContrasena: EditText
     private lateinit var btnIniciarSesion: Button
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-
     private lateinit var binding: ActivityIniciarSesionBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,13 +39,14 @@ class IniciarSesion : AppCompatActivity() {
         binding = ActivityIniciarSesionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        textHora = findViewById(R.id.textHora)
-        textFecha = findViewById(R.id.textFecha)
-        textUbicacion = findViewById(R.id.textUbicacion)
-        editTextCorreoNumero = findViewById(R.id.editTextCorreoNumero)
-        editTextContrasena = findViewById(R.id.editTextContrasena)
-        btnIniciarSesion = findViewById(R.id.btnIniciarSesion)
+        textHora = binding.textHora
+        textFecha = binding.textFecha
+        textUbicacion = binding.textUbicacion
+        editTextCorreoNumero = binding.editTextCorreoNumero
+        editTextContrasena = binding.editTextContrasena
+        btnIniciarSesion = binding.btnIniciarSesion
 
+        lifecycleScope.launch(Dispatchers.IO){}
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         binding.btnIniciarSesion.setOnClickListener {
@@ -97,24 +97,14 @@ class IniciarSesion : AppCompatActivity() {
         )
     }
 
-    fun obtenerHora(): String {
-        val cal = Calendar.getInstance()
-        return "Hora: ${cal.get(Calendar.HOUR_OF_DAY)}:${cal.get(Calendar.MINUTE)}"
-    }
-
-    fun obtenerFecha(): String {
-        val cal = Calendar.getInstance()
-        return "Fecha: ${cal.get(Calendar.DAY_OF_MONTH)}/${cal.get(Calendar.MONTH) + 1}/${cal.get(Calendar.YEAR)}"
-    }
     private fun obtenerUbicacionActual() {
-        if (checkLocationPermission() && isNetworkConnected()) { // Check network connectivity
+        if (checkLocationPermission() && isNetworkConnected()) {
             fusedLocationClient.lastLocation
                 .addOnSuccessListener { location ->
                     location?.let {
-                        GlobalScope.launch(Dispatchers.IO) {
+                        lifecycleScope.launch(Dispatchers.IO) {
                             val geocoder = Geocoder(this@IniciarSesion, Locale.getDefault())
                             try {
-                                // Check cache first (implementation not shown)
                                 val addresses = geocoder.getFromLocation(it.latitude, it.longitude, 1)
                                 launch(Dispatchers.Main) {
                                     if (!addresses.isNullOrEmpty()) {
@@ -150,7 +140,6 @@ class IniciarSesion : AppCompatActivity() {
                     Toast.makeText(this, "Error al obtener la ubicación: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
         } else {
-            // Handle cases where location permission is denied or network is unavailable
             if (!checkLocationPermission()) {
                 solicitarPermisos()
             } else {
@@ -166,7 +155,7 @@ class IniciarSesion : AppCompatActivity() {
         return networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }
 
-    private fun inicioDeSesionExitoso(correo_celular: String, contrasena: String): Boolean {
+    private fun inicioDeSesionExitoso(correoOnumero: String, contrasena: String): Boolean {
         return true
     }
 

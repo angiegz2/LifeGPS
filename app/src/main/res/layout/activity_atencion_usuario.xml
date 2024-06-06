@@ -1,58 +1,74 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp"
     android:background="@drawable/fondo">
 
     <TextView
         android:id="@+id/textHora"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Hora: 03:00 PM"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:gravity="center"
-        android:padding="8dp" />
+        android:gravity="start"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/textFecha"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textHora"
         android:text="Fecha: 12/05/2023"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:gravity="center"
-        android:padding="8dp" />
+        android:gravity="start"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textHora"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/textUbicacion"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textFecha"
         android:text="Ubicación: San Francisco, California"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:gravity="center"
-        android:padding="8dp" />
+        android:gravity="start"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textFecha"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/textAtencion"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="¿Es usted quién requiere atención?"
-        android:layout_marginStart="48dp"
         android:layout_marginTop="150dp"
         android:textSize="18sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textUbicacion"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/linearLayoutButtons"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_horizontal"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textAtencion"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <Button
             android:id="@+id/btnSi"
@@ -78,16 +94,27 @@
             android:padding="14dp"
             android:background="@drawable/custom_button_background"
             android:text="NO" />
+
     </LinearLayout>
 
     <View
         android:id="@+id/home"
         android:layout_width="65dp"
         android:layout_height="62dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="162dp"
-        android:layout_marginTop="280dp"
-        android:background="@drawable/home" />
+        android:background="@drawable/home"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/profileIcon"
+        android:layout_width="90dp"
+        android:layout_height="70dp"
+        android:padding="1dp"
+        android:src="@drawable/profile"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
