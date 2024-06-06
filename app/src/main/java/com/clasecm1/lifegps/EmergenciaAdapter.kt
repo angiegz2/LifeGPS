@@ -24,17 +24,19 @@ class EmergenciaAdapter(private val context: Context, private val emergencias: L
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val rowView = convertView ?: inflater.inflate(R.layout.activity_lista_emergencias, parent, false)
+        val rowView = convertView ?: inflater.inflate(R.layout.list_item, parent, false)
 
         val tvNombre = rowView.findViewById<TextView>(R.id.tvNombre)
+        val tvGravedad = rowView.findViewById<TextView>(R.id.tvGravedad)
         val emergencia = getItem(position) as Emergencia
 
         tvNombre.text = emergencia.nombre
+        tvGravedad.text = emergencia.gravedad
         rowView.setBackgroundColor(emergencia.color)
 
-        // Añadir OnClickListener al ítem de la lista
+
         rowView.setOnClickListener {
-            // Manejar el clic en el ítem
+            val emergencia = getItem(position) as Emergencia
             onEmergenciaItemClick(emergencia)
         }
 
@@ -42,9 +44,6 @@ class EmergenciaAdapter(private val context: Context, private val emergencias: L
     }
 
     private fun onEmergenciaItemClick(emergencia: Emergencia) {
-        // Aquí puedes definir la lógica cuando se hace clic en una emergencia
-        // Puedes mostrar un mensaje, abrir una nueva actividad, etc.
-        // Por ejemplo:
         Toast.makeText(context, "Seleccionaste: ${emergencia.nombre}", Toast.LENGTH_SHORT).show()
     }
 }

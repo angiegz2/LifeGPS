@@ -1,9 +1,12 @@
 package com.clasecm1.lifegps
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -57,6 +60,11 @@ class IniciarSesion : AppCompatActivity() {
                 Toast.makeText(this, "Inicio de sesión fallido", Toast.LENGTH_SHORT).show()
             }
         }
+        binding.btnRegistrarse.setOnClickListener {
+            val intent = Intent(this, RegistroActivity::class.java)
+            startActivity(intent)
+        }
+
         if (checkLocationPermission()) {
             obtenerUbicacionActual()
         } else {
@@ -89,14 +97,24 @@ class IniciarSesion : AppCompatActivity() {
         )
     }
 
+    fun obtenerHora(): String {
+        val cal = Calendar.getInstance()
+        return "Hora: ${cal.get(Calendar.HOUR_OF_DAY)}:${cal.get(Calendar.MINUTE)}"
+    }
+
+    fun obtenerFecha(): String {
+        val cal = Calendar.getInstance()
+        return "Fecha: ${cal.get(Calendar.DAY_OF_MONTH)}/${cal.get(Calendar.MONTH) + 1}/${cal.get(Calendar.YEAR)}"
+    }
     private fun obtenerUbicacionActual() {
-        if (checkLocationPermission()) {
+        if (checkLocationPermission() && isNetworkConnected()) { // Check network connectivity
             fusedLocationClient.lastLocation
                 .addOnSuccessListener { location ->
                     location?.let {
                         GlobalScope.launch(Dispatchers.IO) {
                             val geocoder = Geocoder(this@IniciarSesion, Locale.getDefault())
                             try {
+                                // Check cache first (implementation not shown)
                                 val addresses = geocoder.getFromLocation(it.latitude, it.longitude, 1)
                                 launch(Dispatchers.Main) {
                                     if (!addresses.isNullOrEmpty()) {
@@ -105,20 +123,23 @@ class IniciarSesion : AppCompatActivity() {
                                         val pais = address.countryName ?: "Desconocido"
 
                                         val cal = Calendar.getInstance()
-                                        val hora = cal.get(Calendar.HOUR_OF_DAY)
-                                        val minutos = cal.get(Calendar.MINUTE)
-                                        val fecha = "${cal.get(Calendar.DAY_OF_MONTH)}/${cal.get(Calendar.MONTH) + 1}/${cal.get(Calendar.YEAR)}"
 
-                                        val ubicacionTexto = "Hora: $hora:$minutos | Fecha: $fecha | Ubicación: $ciudad, $pais"
-                                        textHora.text = ubicacionTexto
-                                        textFecha.text = ubicacionTexto
+                                        val horaTexto = "Hora: ${cal.get(Calendar.HOUR_OF_DAY)}:${cal.get(Calendar.MINUTE)}"
+                                        textHora.text = horaTexto
+
+                                        val fechaTexto = "Fecha: ${cal.get(Calendar.DAY_OF_MONTH)}/${cal.get(Calendar.MONTH) + 1}/${cal.get(Calendar.YEAR)}"
+                                        textFecha.text = fechaTexto
+
+                                        val ubicacionTexto = "Ubicación: $ciudad, $pais"
                                         textUbicacion.text = ubicacionTexto
                                     } else {
-                                        Toast.makeText(this@IniciarSesion, "No se encontraron direcciones de ubicación", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(this@IniciarSesion, "No se encontraron direcciones", Toast.LENGTH_SHORT).show()
                                     }
                                 }
                             } catch (e: Exception) {
-                                Toast.makeText(this@IniciarSesion, "Error al obtener la ubicación: ${e.message}", Toast.LENGTH_SHORT).show()
+                                launch(Dispatchers.Main) {
+                                    Toast.makeText(this@IniciarSesion, "Error al obtener la ubicación: ${e.message}", Toast.LENGTH_SHORT).show()
+                                }
                             }
                         }
                     } ?: run {
@@ -129,11 +150,23 @@ class IniciarSesion : AppCompatActivity() {
                     Toast.makeText(this, "Error al obtener la ubicación: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
         } else {
-            solicitarPermisos()
+            // Handle cases where location permission is denied or network is unavailable
+            if (!checkLocationPermission()) {
+                solicitarPermisos()
+            } else {
+                Toast.makeText(this, "Se requiere conexión a internet", Toast.LENGTH_SHORT).show()
+            }
         }
     }
+    private fun isNetworkConnected(): Boolean {
+        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork ?: return false
+        val networkCapabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
 
-    private fun inicioDeSesionExitoso(correoONumero: String, contrasena: String): Boolean {
+        return networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+    }
+
+    private fun inicioDeSesionExitoso(correo_celular: String, contrasena: String): Boolean {
         return true
     }
 

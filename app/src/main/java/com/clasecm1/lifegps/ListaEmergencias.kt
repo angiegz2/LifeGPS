@@ -1,9 +1,7 @@
 package com.clasecm1.lifegps
 
 import android.os.Bundle
-import android.widget.AdapterView
 import android.widget.ListView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class ListaEmergenciasActivity : AppCompatActivity() {
@@ -15,18 +13,13 @@ class ListaEmergenciasActivity : AppCompatActivity() {
         val lvEmergencias = findViewById<ListView>(R.id.lvEmergencias)
 
         val emergencias = listOf(
-            Emergencia("Infarto", R.color.colorRojo),
-            Emergencia("Fractura", R.color.colorNaranja),
-            Emergencia("Desmayo", R.color.colorAzul),
-            Emergencia("Corte leve", R.color.colorVerde)
+            Emergencia("Infarto", R.color.colorRojo, "Alerta extrema"),
+            Emergencia("Fractura", R.color.colorNaranja, "Urgente"),
+            Emergencia("Desmayo", R.color.colorAzul, "Grave"),
+            Emergencia("Corte leve", R.color.colorVerde, "Leve")
         )
 
         val adapter = EmergenciaAdapter(this, emergencias)
         lvEmergencias.adapter = adapter
-
-        lvEmergencias.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-            val selectedEmergencia = emergencias[position]
-            Toast.makeText(this, "Seleccionaste: ${selectedEmergencia.nombre}", Toast.LENGTH_SHORT).show()
-        }
     }
 }

@@ -2,12 +2,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/fondo">
+
+    <TextView
+        android:id="@+id/textHora"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hora: 12:00 AM"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/textFecha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textHora"
+        android:text="Fecha: 12/05/2023"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/textUbicacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textFecha"
+        android:text="Ubicación: San Francisco, California"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="8dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="¿Qué debo hacer?" />
+        android:text="¿Qué debo hacer?"
+        android:layout_gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,7 +52,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/edittext_border"/>
+        android:background="@drawable/edittext_border"
+        android:layout_gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -29,7 +64,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/edittext_border"/>
+        android:background="@drawable/edittext_border"
+        android:layout_gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,7 +76,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/edittext_border"/>
+        android:background="@drawable/edittext_border"
+        android:layout_gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -51,7 +88,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/edittext_border"/>
+        android:background="@drawable/edittext_border"
+        android:layout_gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -62,7 +100,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/edittext_border"/>
+        android:background="@drawable/edittext_border"
+        android:layout_gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -73,7 +112,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/edittext_border"/>
+        android:background="@drawable/edittext_border"
+        android:layout_gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -84,5 +124,16 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/edittext_border"/>
+        android:background="@drawable/edittext_border"
+        android:layout_gravity="center"/>
+
+    <View
+        android:id="@+id/home"
+        android:layout_width="65dp"
+        android:layout_height="62dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="162dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/home" />
 </LinearLayout>

@@ -12,7 +12,7 @@ class AtencionUsuario : AppCompatActivity() {
         binding = ActivityAtencionUsuarioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnAtencion.setOnClickListener {
+        binding.btnSi.setOnClickListener {
             val intent = Intent(this, FormularioEmergencia::class.java)
             startActivity(intent)
         }

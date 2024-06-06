@@ -7,7 +7,8 @@ import com.clasecm1.lifegps.databinding.ActivitySeleccionEmergenciaBinding
 
 data class Emergencia(
     val nombre: String,
-    val color: Int
+    val color: Int,
+    val gravedad: String
 )
 
 
