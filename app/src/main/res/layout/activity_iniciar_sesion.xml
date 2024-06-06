@@ -1,66 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
-    <!-- Mostrar hora, fecha y ubicación -->
     <TextView
-        android:id="@+id/textHoraFechaUbicacion"
+        android:id="@+id/textHora"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/text_hora_fecha_ubicacion"
+        android:text="Hora: 12:00 AM"
         android:textSize="16sp"
         android:textStyle="bold"
         android:gravity="center"
         android:padding="8dp" />
 
-
-    <!-- Texto "Inicia Sesión Con Life GPS" -->
     <TextView
+        android:id="@+id/textFecha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/text_iniciar_sesion_con_gps"
+        android:layout_below="@id/textHora"
+        android:text="Fecha: 12/05/2023"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/textUbicacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textFecha"
+        android:text="Ubicación: San Francisco, California"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/textIniciarSesionConGPS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textUbicacion"
+        android:layout_marginTop="16dp"
+        android:text="Inicia sesión con LifeGPS"
         android:textSize="18sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:layout_below="@id/textHoraFechaUbicacion"
         android:padding="8dp" />
 
-    <!-- Campo de correo o número de celular -->
     <EditText
         android:id="@+id/editTextCorreoNumero"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/correo_electr_nico_o_n_mero_de_celular"
-        android:background="@drawable/edittext_border"
-        android:padding="12dp"
-        android:minHeight="48dp"
-        android:layout_below="@id/textHoraFechaUbicacion"
+        android:layout_below="@id/textIniciarSesionConGPS"
         android:layout_marginTop="10dp"
+        android:autofillHints="emailAddress"
+        android:background="@drawable/edittext_border"
+        android:hint="@string/correo_electr_nico_o_n_mero_de_celular"
         android:inputType="textEmailAddress"
-        android:autofillHints="emailAddress" />
+        android:minHeight="48dp"
+        android:padding="12dp" />
 
-
-    <!-- Campo de contraseña -->
     <EditText
         android:id="@+id/editTextContrasena"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/contrase_a"
-        android:background="@drawable/edittext_border"
-        android:inputType="textPassword"
-        android:padding="12dp"
-        android:minHeight="48dp"
         android:layout_below="@id/editTextCorreoNumero"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_border"
+        android:hint="@string/contrase_a"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:padding="12dp" />
 
-    <!-- Botón para iniciar sesión -->
     <Button
         android:id="@+id/btnIniciarSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/iniciar_sesi_n"
         android:layout_below="@id/editTextContrasena"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:text="@string/iniciar_sesi_n"
+        android:background="@drawable/custom_button_background2"
+        android:textColor="@color/white"
+        android:minHeight="48dp"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/textNoTienesCuenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnIniciarSesion"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="¿No tienes cuenta?" />
+
+    <Button
+        android:id="@+id/btnRegistrarse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textNoTienesCuenta"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Registrate"
+        android:background="@drawable/custom_button_background3"
+        android:minHeight="48dp"
+        android:padding="12dp"/>
+
+    <Button
+        android:id="@+id/btnFacebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnRegistrarse"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Inicia sesión con Facebook"
+        android:background="@drawable/edittext_border"
+        android:minHeight="48dp"
+        android:padding="12dp"/>
+
+    <Button
+        android:id="@+id/btnGoogle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnFacebook"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Inicia sesión con Google"
+        android:background="@drawable/edittext_border"
+        android:minHeight="48dp"
+        android:padding="12dp"/>
+
 </RelativeLayout>

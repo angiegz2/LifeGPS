@@ -5,12 +5,55 @@
     android:layout_height="match_parent"
     android:padding="8dp">
 
+    <TextView
+        android:id="@+id/textHora"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hora: 12:00 AM"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/textFecha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textHora"
+        android:text="Fecha: 12/05/2023"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/textUbicacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textFecha"
+        android:text="Ubicación: San Francisco, California"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/textViewBienvenido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¡Bienvenido!"
+        android:layout_marginStart="70dp"
+        android:layout_below="@id/textUbicacion"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"/>
 
     <TextView
         android:id="@+id/textViewTipoEmergencia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Seleccione su tipo de emergencia"
+        android:layout_below="@id/textViewBienvenido"
         android:layout_marginStart="70dp"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -24,7 +67,8 @@
         android:layout_marginStart="130dp"
         android:textAllCaps="false"
         android:gravity="center"
-        android:padding="16dp"
+        android:minHeight="48dp"
+        android:padding="14dp"
         android:layout_gravity="center_horizontal"
         android:layout_below="@+id/textViewTipoEmergencia"
         android:background="@drawable/custom_button_background"
@@ -35,10 +79,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Urgente"
-        android:layout_marginStart="150dp"
+        android:layout_alignLeft="@id/btnAlertaExtrema"
+        android:layout_alignRight="@id/btnAlertaExtrema"
         android:textAllCaps="false"
         android:gravity="center"
-        android:padding="16dp"
+        android:minHeight="48dp"
+        android:padding="8dp"
         android:layout_gravity="center_horizontal"
         android:layout_below="@+id/btnAlertaExtrema"
         android:background="@drawable/custom_button_background1"
@@ -49,10 +95,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Grave"
-        android:layout_marginStart="150dp"
+        android:layout_alignLeft="@id/btnAlertaExtrema"
+        android:layout_alignRight="@id/btnAlertaExtrema"
         android:textAllCaps="false"
         android:gravity="center"
-        android:padding="16dp"
+        android:minHeight="48dp"
+        android:padding="14dp"
         android:layout_gravity="center_horizontal"
         android:layout_below="@+id/btnUrgente"
         android:background="@drawable/custom_button_background2"
@@ -63,7 +111,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Leve"
-        android:layout_marginStart="150dp"
+        android:layout_alignLeft="@id/btnAlertaExtrema"
+        android:layout_alignRight="@id/btnAlertaExtrema"
         android:textAllCaps="false"
         android:gravity="center"
         android:padding="16dp"
@@ -78,9 +127,19 @@
         android:layout_height="wrap_content"
         android:text="Activar rastreo"
         android:layout_below="@id/btnLeve"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/custom_button_background3"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/custom_button_rastreo"
         android:layout_centerHorizontal="true"/>
+
+    <View
+        android:id="@+id/img_pgs"
+        android:layout_width="65dp"
+        android:layout_height="62dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="158dp"
+        android:layout_marginTop="439dp"
+        android:background="@drawable/img" />
 
     <TextView
         android:id="@+id/textViewTiempoLlegada"
@@ -102,6 +161,7 @@
         android:padding="16dp"
         android:layout_below="@id/textViewTiempoLlegada"
         android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/edittext_border"/>
 
 </RelativeLayout>

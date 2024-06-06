@@ -2,9 +2,9 @@ package com.clasecm1.lifegps
 
 import android.os.Bundle
 import android.widget.AdapterView
+import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import android.widget.ListView
 
 class ListaEmergenciasActivity : AppCompatActivity() {
 

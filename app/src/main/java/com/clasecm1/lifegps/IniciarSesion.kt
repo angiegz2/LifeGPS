@@ -1,6 +1,7 @@
 package com.clasecm1.lifegps
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.clasecm1.lifegps.databinding.ActivityIniciarSesionBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.Dispatchers
@@ -20,35 +22,41 @@ import java.util.Locale
 
 class IniciarSesion : AppCompatActivity() {
 
-    private lateinit var textHoraFechaUbicacion: TextView
+    private lateinit var textHora: TextView
+    private lateinit var textFecha: TextView
+    private lateinit var textUbicacion: TextView
     private lateinit var editTextCorreoNumero: EditText
     private lateinit var editTextContrasena: EditText
     private lateinit var btnIniciarSesion: Button
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
+    private lateinit var binding: ActivityIniciarSesionBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_iniciar_sesion)
+        binding = ActivityIniciarSesionBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        textHoraFechaUbicacion = findViewById(R.id.textHoraFechaUbicacion)
+        textHora = findViewById(R.id.textHora)
+        textFecha = findViewById(R.id.textFecha)
+        textUbicacion = findViewById(R.id.textUbicacion)
         editTextCorreoNumero = findViewById(R.id.editTextCorreoNumero)
         editTextContrasena = findViewById(R.id.editTextContrasena)
         btnIniciarSesion = findViewById(R.id.btnIniciarSesion)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        btnIniciarSesion.setOnClickListener {
+        binding.btnIniciarSesion.setOnClickListener {
             val correoONumero = editTextCorreoNumero.text.toString()
             val contrasena = editTextContrasena.text.toString()
 
-            // Aquí debes manejar la lógica de inicio de sesión con Life GPS
             if (inicioDeSesionExitoso(correoONumero, contrasena)) {
-                // Si el inicio de sesión es exitoso, puedes dirigir a la siguiente actividad
+                val intent = Intent(this, AtencionUsuario::class.java)
+                startActivity(intent)
             } else {
-                // Manejar inicio de sesión fallido
+                Toast.makeText(this, "Inicio de sesión fallido", Toast.LENGTH_SHORT).show()
             }
         }
-
         if (checkLocationPermission()) {
             obtenerUbicacionActual()
         } else {
@@ -102,7 +110,9 @@ class IniciarSesion : AppCompatActivity() {
                                         val fecha = "${cal.get(Calendar.DAY_OF_MONTH)}/${cal.get(Calendar.MONTH) + 1}/${cal.get(Calendar.YEAR)}"
 
                                         val ubicacionTexto = "Hora: $hora:$minutos | Fecha: $fecha | Ubicación: $ciudad, $pais"
-                                        textHoraFechaUbicacion.text = ubicacionTexto
+                                        textHora.text = ubicacionTexto
+                                        textFecha.text = ubicacionTexto
+                                        textUbicacion.text = ubicacionTexto
                                     } else {
                                         Toast.makeText(this@IniciarSesion, "No se encontraron direcciones de ubicación", Toast.LENGTH_SHORT).show()
                                     }
